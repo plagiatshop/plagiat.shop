@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PLAGIAT SHOP — стильний одяг, взуття та аксесуари</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --surface: #121212;
+        --surface-hover: #1e1e1e;
+        --neon: #ffffff;
+        --neon-dim: rgba(255, 255, 255, 0.08);
+        --neon-glow:
+          0 0 12px rgba(255, 255, 255, 0.4), 0 0 25px rgba(255, 255, 255, 0.15);
+        --text: #e0e0e0;
+        --muted: #7a7a7a;
+        --border: #2a2a2a;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background-color: var(--bg);
+        background-image:
+          radial-gradient(circle at 50% 0%, #222 0%, transparent 600px),
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size:
+          100% 100vh,
+          40px 40px,
+          40px 40px;
+        background-attachment: fixed;
+        background-position:
+          top center,
+          center center,
+          center center;
+        color: var(--text);
+        font-family: "Inter", sans-serif;
+        padding: 40px 14px 0px;
+        line-height: 1.5;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+      }
+
+      .container::before {
+        content: "";
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        height: 2px;
+        background: var(--neon);
+        box-shadow: var(--neon-glow);
+        z-index: 10;
+      }
+
+      header {
+        padding: 40px 30px 30px;
+        position: relative;
+        text-align: center;
+      }
+
+      .quick-nav {
+        position: sticky;
+        top: -1px;
+        z-index: 100;
+        background: rgba(18, 18, 18, 0.95);
+        backdrop-filter: blur(8px);
+        display: flex;
+        gap: 8px;
+        padding: 16px 20px;
+        overflow-x: auto;
+        border-bottom: 1px solid var(--border);
+        border-top: 1px solid var(--border);
+        scrollbar-width: none;
+      }
+
+      .quick-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .quick-nav a {
+        flex: 0 0 auto;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        text-decoration: none;
+        color: var(--muted);
+        background: transparent;
+        padding: 8px 14px;
+        border-radius: 40px;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .quick-nav a:hover {
+        color: #fff;
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+
+      .eyebrow {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin: 0 0 16px;
+      }
+
+      h1 {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 52px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 0 0 12px;
+        line-height: 1;
+        color: #fff;
+        text-shadow: var(--neon-glow);
+      }
+
+      .tagline {
+        font-size: 14px;
+        color: #fff;
+        margin: 0 0 8px;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      .lede {
+        font-size: 13.5px;
+        color: var(--muted);
+        margin-top: 10px;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      section {
+        padding: 30px;
+        border-bottom: 1px solid var(--border);
+        scroll-margin-top: 60px;
+      }
+
+      section:last-of-type {
+        border-bottom: none;
+      }
+
+      .sec-label {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 0 0 20px;
+      }
+
+      .sec-label::before {
+        content: "";
+        display: block;
+        width: 6px;
+        height: 6px;
+        background: var(--neon);
+        box-shadow: var(--neon-glow);
+        border-radius: 50%;
+      }
+
+      .row {
+        display: flex;
+        gap: 16px;
+        padding: 12px 0;
+        align-items: flex-start;
+        font-size: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .row:last-child {
+        border-bottom: none;
+      }
+
+      .row .k {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: var(--muted);
+        min-width: 85px;
+        padding-top: 2px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .row .v {
+        flex: 1;
+        color: #ccc;
+      }
+
+      .row .v b {
+        color: #fff;
+        font-weight: 600;
+      }
+
+      .note {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        color: #fff;
+        background: var(--neon-dim);
+        border-left: 2px solid var(--neon);
+        padding: 12px 14px;
+        margin-top: 16px;
+        letter-spacing: 0.5px;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .tag {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 10px 18px;
+        border: 1px solid var(--border);
+        border-radius: 40px;
+        text-decoration: none;
+        color: var(--text);
+        background: transparent;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+      }
+
+      .tag:hover {
+        border-color: var(--neon);
+        color: var(--neon);
+        box-shadow: var(--neon-glow);
+      }
+
+      .tag .hash {
+        color: var(--muted);
+        margin-right: 2px;
+        transition: color 0.3s ease;
+      }
+
+      .tag[data-filter] {
+        cursor: pointer;
+      }
+
+      .tag.active {
+        background: var(--neon);
+        color: #000;
+        border-color: var(--neon);
+        box-shadow: var(--neon-glow);
+      }
+
+      .tag.active .hash,
+      .tag.active .count {
+        color: #000;
+      }
+
+      .tag-desc {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 0;
+        padding-left: 10px;
+      }
+
+      .tag .count {
+        color: var(--muted);
+        font-weight: 400;
+        margin-left: 6px;
+      }
+
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        margin-top: 20px;
+      }
+
+      .product {
+        background: #000;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .product:hover {
+        border-color: var(--neon);
+        box-shadow: var(--neon-glow);
+        transform: translateY(-3px);
+      }
+
+      .product .photo-wrap {
+        aspect-ratio: 1/1;
+        background: #111;
+        overflow: hidden;
+        position: relative;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .product:hover .photo-wrap {
+        border-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .product .photo-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(30%) contrast(110%);
+        transition:
+          filter 0.4s ease,
+          transform 0.4s ease;
+      }
+
+      .product:hover .photo-wrap img {
+        filter: grayscale(0%) contrast(100%);
+        transform: scale(1.05);
+      }
+
+      .product .badge-stock {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #000;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        padding: 4px 8px;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      }
+
+      .product .badge-cat {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #fff;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 9px;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .product .info {
+        padding: 14px;
+      }
+
+      .product .p-name {
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 0 8px;
+        line-height: 1.3;
+        color: #fff;
+      }
+
+      .product .p-price {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 14px;
+        color: #fff;
+        font-weight: 700;
+        margin: 0;
+      }
+
+      .catalog-empty {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        color: var(--muted);
+        text-align: center;
+        padding: 40px 0;
+        display: none;
+        text-transform: uppercase;
+        border: 1px dashed var(--border);
+        margin-top: 20px;
+        border-radius: 8px;
+      }
+
+      .load-more {
+        display: block;
+        width: 100%;
+        background: transparent;
+        border: 1px dashed var(--border);
+        color: var(--muted);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        padding: 16px;
+        margin-top: 16px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+      }
+
+      .load-more:hover {
+        border-color: var(--neon);
+        color: var(--neon);
+        box-shadow: 0 0 12px rgba(255, 255, 255, 0.1);
+      }
+
+      .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        counter-reset: step;
+      }
+
+      .steps li {
+        counter-increment: step;
+        display: flex;
+        gap: 16px;
+        padding: 16px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 14px;
+        color: #ccc;
+        align-items: center;
+      }
+
+      .steps li:last-child {
+        border-bottom: none;
+      }
+
+      .steps li::before {
+        content: "0" counter(step);
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 800;
+        font-size: 11px;
+        color: #000;
+        background: #fff;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+      }
+
+      .cta {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        background: var(--neon);
+        color: #000;
+        text-decoration: none;
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 800;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-size: 13px;
+        padding: 18px;
+        margin-top: 24px;
+        border-radius: 4px;
+        transition: all 0.3s ease;
+        box-shadow: var(--neon-glow);
+      }
+
+      .cta:hover {
+        background: transparent;
+        color: var(--neon);
+        border: 1px solid var(--neon);
+      }
+
+      .social-links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .soc-link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #0d0d0d;
+        text-decoration: none;
+        color: #fff;
+        transition: all 0.3s ease;
+      }
+
+      .soc-link:hover {
+        border-color: var(--neon);
+        box-shadow: var(--neon-glow);
+        transform: translateY(-3px);
+      }
+
+      .soc-icon {
+        font-family: "JetBrains Mono", monospace;
+        font-weight: 800;
+        font-size: 18px;
+        color: #fff;
+      }
+
+      .soc-name {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        color: var(--muted);
+      }
+
+      .soc-link:hover .soc-name {
+        color: #fff;
+      }
+
+      footer {
+        padding: 40px 30px 80px;
+        text-align: center;
+        border-top: 1px solid var(--border);
+        background: #050505;
+      }
+
+      footer .fav {
+        font-size: 13px;
+        color: var(--muted);
+        margin-bottom: 24px;
+      }
+
+      footer .track {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 11px;
+        letter-spacing: 3px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      footer .glow {
+        color: #fff;
+        font-weight: 800;
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+      }
+
+      @media (max-width: 400px) {
+        h1 {
+          font-size: 42px;
+        }
+        section {
+          padding: 30px 20px;
+        }
+        .catalog-grid {
+          grid-template-columns: 1fr;
+        }
+        .social-links {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <p class="eyebrow">Storefront</p>
+        <h1>Plagiat<br />Shop</h1>
+        <p class="tagline">
+          Твій провідник у світ стильного одягу, взуття та аксесуарів.
+        </p>
+        <p class="lede">
+          Знаходимо речі найкращої якості виконання і привозимо за адекватними
+          цінами.
+        </p>
+      </header>
+
+      <nav class="quick-nav">
+        <a href="#catalog">Наявність</a>
+        <a href="#delivery">Доставка</a>
+        <a href="#payment">Оплата</a>
+        <a href="#order">Оформлення</a>
+        <a href="#socials">Мережі</a>
+      </nav>
+
+      <section id="delivery">
+        <p class="sec-label">Доставка</p>
+        <div class="row">
+          <span class="k">Служба</span>
+          <span class="v">Нова Пошта по всій Україні</span>
+        </div>
+        <div class="row">
+          <span class="k">Термін</span>
+          <span class="v"><b>1–2 дні</b>, якщо товар у наявності</span>
+        </div>
+        <div class="note">
+          Обов'язково перевіряй посилку на пошті при отриманні.
+        </div>
+      </section>
+
+      <section id="payment">
+        <p class="sec-label">Оплата</p>
+        <div class="row">
+          <span class="k">Варіант 1</span>
+          <span class="v"
+            >Мінімальна передоплата — решта накладеним платежем</span
+          >
+        </div>
+        <div class="row">
+          <span class="k">Варіант 2</span>
+          <span class="v"
+            >Повна передоплата на картку (економія на комісії)</span
+          >
+        </div>
+        <div class="row">
+          <span class="k">Варіант 3</span>
+          <span class="v">Безпечна угода (OLX-доставка, mono-базар)</span>
+        </div>
+      </section>
+
+      <section id="catalog">
+        <p class="sec-label">Навігація та Наявність</p>
+        <div class="tags" id="filterTags">
+          <div class="tag-item">
+            <a href="#catalog" class="tag active" data-filter="all">
+              <span class="hash">#</span>всі<span
+                class="count"
+                data-count="all"
+              ></span>
+            </a>
+          </div>
+          <div class="tag-item">
+            <a href="#catalog" class="tag" data-filter="взуття">
+              <span class="hash">#</span>взуття<span
+                class="count"
+                data-count="взуття"
+              ></span>
+            </a>
+            <p class="tag-desc">кросівки, кеди</p>
+          </div>
+          <div class="tag-item">
+            <a href="#catalog" class="tag" data-filter="одяг">
+              <span class="hash">#</span>одяг<span
+                class="count"
+                data-count="одяг"
+              ></span>
+            </a>
+            <p class="tag-desc">худі, футболки</p>
+          </div>
+          <div class="tag-item">
+            <a href="#catalog" class="tag" data-filter="аксесуари">
+              <span class="hash">#</span>аксесуари<span
+                class="count"
+                data-count="аксесуари"
+              ></span>
+            </a>
+            <p class="tag-desc">кепки, сумки, прикраси</p>
+          </div>
+        </div>
+
+        <div class="catalog-grid" id="catalogGrid"></div>
+        <p class="catalog-empty" id="catalogEmpty">Товарів не знайдено</p>
+        <button id="loadMoreBtn" class="load-more" style="display: none">
+          Показати ще ↓
+        </button>
+      </section>
+
+      <section id="order">
+        <p class="sec-label">Оформлення</p>
+        <ul class="steps">
+          <li>Надішли скріншот або посилання на товар</li>
+          <li>Вкажи обраний розмір</li>
+          <li>Надішли ПІБ, телефон, місто і номер відділення НП</li>
+        </ul>
+        <a href="https://t.me/+zyjlYSAWLFFiYjIy" class="cta" target="_blank">
+          Написати менеджеру <span style="font-size: 16px">→</span>
+        </a>
+      </section>
+
+      <section id="socials">
+        <p class="sec-label">Наші соціальні мережі</p>
+        <div class="social-links">
+          <a
+            href="https://t.me/+zyjlYSAWLFFiYjIy"
+            class="soc-link"
+            target="_blank"
+          >
+            <span class="soc-icon">TG</span>
+            <span class="soc-name">Telegram</span>
+          </a>
+          <a
+            href="https://instagram.com/plagiat.shop"
+            class="soc-link"
+            target="_blank"
+          >
+            <span class="soc-icon">IG</span>
+            <span class="soc-name">Instagram</span>
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        <p class="fav">
+          Приємного шопінгу! Підписуйся на наші соцмережі, щоб не пропустити
+          оновлення.
+        </p>
+        <p class="track"><span class="glow">PLAGIAT SHOP</span> // 2026</p>
+      </footer>
+    </div>
+
+    <script>
+      /* ============================================================
+      КАТАЛОГ ТОВАРІВ
+      ============================================================ */
+      const products = [
+        {
+          photo: "images/futbacp.jpg",
+          name: "Футболка CP Company",
+          price: "950 грн",
+          tag: "одяг",
+        },
+        {
+          photo: "images/braslzhin.jpg",
+          name: "Браслет Lacoste жіночий",
+          price: "850 грн",
+          tag: "аксесуари",
+        },
+        {
+          photo: "images/kepkyhrom.jpg",
+          name: "Кепка Chrome Hearts",
+          price: "650 грн",
+          tag: "аксесуари",
+        },
+        {
+          photo: "images/sumkylakost.jpg",
+          name: "Сумка Lacoste через плече",
+          price: "850 грн",
+          tag: "аксесуари",
+        },
+      ];
+
+      const grid = document.getElementById("catalogGrid");
+      const emptyMsg = document.getElementById("catalogEmpty");
+      const tagButtons = document.querySelectorAll(
+        "#filterTags .tag[data-filter]",
+      );
+      const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+      let currentLimit = 6;
+      let currentCategory = "all";
+
+      function renderCatalog(filter, limit) {
+        grid.innerHTML = "";
+        const items =
+          filter === "all"
+            ? products
+            : products.filter((p) => p.tag === filter);
+
+        emptyMsg.style.display = items.length ? "none" : "block";
+
+        const itemsToShow = items.slice(0, limit);
+
+        itemsToShow.forEach((p) => {
+          const card = document.createElement("div");
+          card.className = "product";
+          card.innerHTML = `
+            <div class="photo-wrap">
+              <img src="${p.photo}" alt="${p.name}" loading="lazy">
+              <span class="badge-cat">${p.tag}</span>
+              <span class="badge-stock">в наявності</span>
+            </div>
+            <div class="info">
+              <p class="p-name">${p.name}</p>
+              <p class="p-price">${p.price}</p>
+            </div>`;
+          grid.appendChild(card);
+        });
+
+        if (items.length > limit) {
+          loadMoreBtn.style.display = "block";
+        } else {
+          loadMoreBtn.style.display = "none";
+        }
+      }
+
+      loadMoreBtn.addEventListener("click", () => {
+        currentLimit += 6;
+        renderCatalog(currentCategory, currentLimit);
+      });
+
+      function updateCounts() {
+        document.querySelectorAll(".count").forEach((span) => {
+          const key = span.dataset.count;
+          const n =
+            key === "all"
+              ? products.length
+              : products.filter((p) => p.tag === key).length;
+          span.textContent = " " + n;
+        });
+      }
+
+      tagButtons.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          tagButtons.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          currentCategory = btn.dataset.filter;
+          currentLimit = 6;
+          renderCatalog(currentCategory, currentLimit);
+        });
+      });
+
+      updateCounts();
+      renderCatalog(currentCategory, currentLimit);
+    </script>
+  </body>
+</html>

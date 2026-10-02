@@ -281,9 +281,9 @@ section:last-of-type { border-bottom: none; }
 
 .product .info { padding: 14px; display: flex; flex-direction: column; flex-grow: 1; }
 .product .p-name { font-size: 13px; font-weight: 500; margin: 0 0 8px; line-height: 1.3; color: #fff; }
-.product .p-price { font-family: "JetBrains Mono", monospace; font-size: 14px; color: #fff; font-weight: 700; margin: 0; }
+.product .p-price { font-family: "JetBrains Mono", monospace; font-size: 14px; color: #fff; font-weight: 700; margin: 0 0 12px; }
 
-.p-sizes { display: flex; flex-wrap: wrap; gap: 5px; margin: 10px 0 14px; }
+.p-sizes { display: flex; flex-wrap: wrap; gap: 5px; margin: 0 0 12px; }
 
 .p-size {
   font-family: "JetBrains Mono", monospace;
@@ -313,8 +313,6 @@ section:last-of-type { border-bottom: none; }
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
-.p-sizes + .card-order-btn, .p-price + .card-order-btn { margin-top: 14px; }
 
 .card-order-btn:hover:not(:disabled) { background: var(--neon); color: #000; box-shadow: var(--neon-glow); border-color: var(--neon); }
 .card-order-btn:disabled { color: var(--muted); cursor: not-allowed; }

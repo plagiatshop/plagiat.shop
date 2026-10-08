@@ -1,13 +1,6 @@
 // Каталог товарів
 const products = [
   {
-    photo: "images/futbacp.jpg",
-    name: "Футболка CP Company",
-    price: "850 грн",
-    tag: "одяг",
-    sizes: ["M", "L", "XL"],
-  },
-  {
     photo: "images/braslchol.jpg",
     name: "Браслет Lacoste чоловічий",
     price: "850 грн",
@@ -15,10 +8,11 @@ const products = [
     sizes: ["20 см"],
   },
   {
-    photo: "images/braslzhin.jpg",
-    name: "Браслет Lacoste жіночий",
+    photo: "images/braslcholchor.jpg",
+    name: "Браслет Lacoste чоловічий",
     price: "850 грн",
     tag: "аксесуари",
+    sizes: ["20 см"],
   },
   {
     photo: "images/kepkahrom.jpg",

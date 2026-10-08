@@ -1,18 +1,39 @@
 // Каталог товарів
 const products = [
   {
-    photo: "images/braslchol.jpg",
-    name: "Браслет Lacoste чоловічий",
-    price: "750 грн",
-    tag: "аксесуари",
-    sizes: ["20 см"],
-  },
-  {
     photo: "images/braslcholchor.jpg",
     name: "Браслет Lacoste чоловічий чорний",
     price: "850 грн",
     tag: "аксесуари",
     sizes: ["20 см"],
+  },
+  {
+    photo: "images/braslchol.jpg",
+    name: "Браслет Lacoste чоловічий сріблястий",
+    price: "750 грн",
+    tag: "аксесуари",
+    sizes: ["20 см"],
+  },
+  {
+    photo: "images/vwskull.jpg",
+    name: "Підвіска Vivienne Westwood Skull",
+    price: "250 грн",
+    tag: "аксесуари",
+    sizes: ["60 см"],
+  },
+  {
+    photo: "images/vwplanet.jpg",
+    name: "Підвіска Vivienne Westwood Planet",
+    price: "250 грн",
+    tag: "аксесуари",
+    sizes: ["41+5 см"],
+  },
+  {
+    photo: "images/vwpin.jpg",
+    name: "Підвіска Vivienne Westwood Pin",
+    price: "250 грн",
+    tag: "аксесуари",
+    sizes: ["43+5 см"],
   },
   {
     photo: "images/kepkahrom.jpg",

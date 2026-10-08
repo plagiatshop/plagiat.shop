@@ -3,13 +3,13 @@ const products = [
   {
     photo: "images/braslchol.jpg",
     name: "Браслет Lacoste чоловічий",
-    price: "850 грн",
+    price: "750 грн",
     tag: "аксесуари",
     sizes: ["20 см"],
   },
   {
     photo: "images/braslcholchor.jpg",
-    name: "Браслет Lacoste чоловічий",
+    name: "Браслет Lacoste чоловічий чорний",
     price: "850 грн",
     tag: "аксесуари",
     sizes: ["20 см"],

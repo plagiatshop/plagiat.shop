@@ -5,7 +5,14 @@ const products = [
     name: "Браслет Lacoste чоловічий чорний",
     price: "850 грн",
     tag: "аксесуари",
-    sizes: ["20 см"],
+    sizes: ["22 см"],
+  },
+  {
+    photo: "images/sumkanayk.jpg",
+    name: "Сумка Nike",
+    price: "650 грн",
+    tag: "аксесуари",
+    sizes: ["One Size"],
   },
   {
     photo: "images/braslchol.jpg",
